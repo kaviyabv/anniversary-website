@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Beautiful Journey ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffd1dc);
+overflow-x:hidden;
+padding:60px 20px;
+}
+
+/* Floating Hearts */
+
+.heart{
+position:fixed;
+bottom:-40px;
+font-size:20px;
+color:white;
+animation:float 8s linear infinite;
+opacity:.7;
+z-index:-1;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0) scale(.5);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-110vh) scale(1.5);
+opacity:0;
+}
+
+}
+
+h1{
+
+text-align:center;
+
+font-size:50px;
+
+color:#ff2d6f;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+color:white;
+
+font-size:18px;
+
+margin-bottom:50px;
+
+}
+
+.timeline{
+
+max-width:900px;
+
+margin:auto;
+
+position:relative;
+
+}
+
+.timeline::after{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+top:0;
+
+width:6px;
+
+height:100%;
+
+background:white;
+
+transform:translateX(-50%);
+
+border-radius:20px;
+
+}
+
+.container{
+
+padding:20px 40px;
+
+position:relative;
+
+width:50%;
+
+}
+
+.left{
+
+left:0;
+
+}
+
+.right{
+
+left:50%;
+
+}
+
+.content{
+
+background:rgba(255,255,255,.25);
+
+backdrop-filter:blur(15px);
+
+padding:20px;
+
+border-radius:20px;
+
+cursor:pointer;
+
+transition:.4s;
+
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+}
+
+.content:hover{
+
+transform:scale(1.05);
+
+background:white;
+
+}
+
+.date{
+
+font-size:15px;
+
+color:#ff2d6f;
+
+font-weight:bold;
+
+margin-bottom:10px;
+
+}
+
+.content h2{
+
+color:#ff2d6f;
+
+margin-bottom:10px;
+
+}
+
+.content p{
+
+color:#555;
+
+}
+
+/* Circle */
+
+.container::after{
+
+content:"❤";
+
+position:absolute;
+
+width:40px;
+
+height:40px;
+
+right:-20px;
+
+background:#ff4f81;
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:50%;
+
+top:30px;
+
+z-index:1;
+
+font-size:18px;
+
+}
+
+.right::after{
+
+left:-20px;
+
+}
+
+/* Popup */
+
+.popup{
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%) scale(0);
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 20px 40px rgba(0,0,0,.3);
+
+transition:.3s;
+
+z-index:999;
+
+width:330px;
+
+}
+
+.popup.active{
+
+transform:translate(-50%,-50%) scale(1);
+
+}
+
+.popup h2{
+
+color:#ff2d6f;
+
+margin-bottom:15px;
+
+}
+
+.popup p{
+
+line-height:28px;
+
+color:#555;
+
+}
+
+.popup button{
+
+margin-top:20px;
+
+padding:12px 28px;
+
+border:none;
+
+background:#ff4f81;
+
+color:white;
+
+border-radius:25px;
+
+cursor:pointer;
+
+}
+
+.overlay{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,.4);
+
+display:none;
+
+}
+
+.overlay.active{
+
+display:block;
+
+}
+
+.next{
+
+display:block;
+
+margin:60px auto;
+
+padding:15px 40px;
+
+border:none;
+
+background:#ff4f81;
+
+color:white;
+
+font-size:18px;
+
+border-radius:30px;
+
+cursor:pointer;
+
+}
+
+@media(max-width:768px){
+
+.timeline::after{
+
+left:20px;
+
+}
+
+.container{
+
+width:100%;
+
+padding-left:60px;
+
+padding-right:20px;
+
+}
+
+.left,.right{
+
+left:0;
+
+}
+
+.container::after{
+
+left:0;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>❤️ Our Love Timeline ❤️</h1>
+
+<p class="subtitle">Every moment with you became a beautiful memory.</p>
+
+<div class="timeline">
+
+<div class="container left">
+<div class="content" onclick="showPopup('💬 First Text')">
+<div class="date">22 Aug 2022</div>
+<h2>✔ First Text</h2>
+<p>Where everything started...</p>
+</div>
+</div>
+
+<div class="container right">
+<div class="content" onclick="showPopup('📞 First Call')">
+<div class="date">Our First Call</div>
+<h2>✔ First Call</h2>
+<p>Hours felt like minutes.</p>
+</div>
+</div>
+
+<div class="container left">
+<div class="content" onclick="showPopup('😅 First Fight')">
+<div class="date">Our First Fight</div>
+<h2>✔ First Fight</h2>
+<p>Even arguments brought us closer.</p>
+</div>
+</div>
+
+<div class="container right">
+<div class="content" onclick="showPopup('🎁 First Gift')">
+<div class="date">Special Memory</div>
+<h2>✔ First Gift</h2>
+<p>A small gift, a huge smile.</p>
+</div>
+</div>
+
+<div class="container left">
+<div class="content" onclick="showPopup('🥹 First Meet')">
+<div class="date">Best Day Ever</div>
+<h2>✔ First Meet</h2>
+<p>Seeing you for the first time ❤️</p>
+</div>
+</div>
+
+<div class="container right">
+<div class="content" onclick="showPopup('🤗 First Hug')">
+<div class="date">Warmest Memory</div>
+<h2>✔ First Hug</h2>
+<p>The safest place in the world.</p>
+</div>
+</div>
+
+<div class="container left">
+<div class="content" onclick="showPopup('🎉 First Anniversary')">
+<div class="date">1 Year Together</div>
+<h2>✔ First Anniversary</h2>
+<p>365 unforgettable days.</p>
+</div>
+</div>
+
+<div class="container right">
+<div class="content" onclick="showPopup('🌍 Long Distance')">
+<div class="date">Distance Started</div>
+<h2>✔ Long Distance</h2>
+<p>Miles apart, hearts together.</p>
+</div>
+</div>
+
+<div class="container left">
+<div class="content" onclick="showPopup('❤️ Today')">
+<div class="date">Happy 4th Anniversary</div>
+<h2>✔ Today ❤️</h2>
+<p>Still choosing you every day.</p>
+</div>
+</div>
+
+</div>
+
+<button class="next" onclick="location.href='gallery.html'">
+Next Surprise ➜
+</button>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="popup" id="popup">
+
+<h2 id="title"></h2>
+
+<p>
+
+🥹<br><br>
+
+Remember this day?<br><br>
+
+I'll never forget it. ❤️
+
+</p>
+
+<button onclick="closePopup()">Close ❤️</button>
+
+</div>
+
+<script>
+
+/* Hearts */
+
+for(let i=0;i<40;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(15+Math.random()*25)+"px";
+
+h.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+}
+
+function showPopup(title){
+
+document.getElementById("title").innerHTML=title;
+
+document.getElementById("popup").classList.add("active");
+
+document.getElementById("overlay").classList.add("active");
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").classList.remove("active");
+
+document.getElementById("overlay").classList.remove("active");
+
+}
+
+document.getElementById("overlay").onclick=closePopup;
+
+</script>
+
+</body>
+</html>

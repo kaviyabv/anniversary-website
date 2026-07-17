@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Miss You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(to bottom,#020111,#191970,#2f4f7f);
+}
+
+/* Stars */
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:.2;}
+50%{opacity:1;}
+}
+
+/* Moon */
+
+.moon{
+position:absolute;
+top:70px;
+left:-120px;
+width:90px;
+height:90px;
+background:#fff9c4;
+border-radius:50%;
+box-shadow:0 0 40px white;
+animation:moonMove 45s linear infinite;
+}
+
+@keyframes moonMove{
+0%{left:-120px;}
+100%{left:110%;}
+}
+
+/* Clouds */
+
+.cloud{
+
+position:absolute;
+
+background:white;
+
+width:130px;
+
+height:40px;
+
+border-radius:40px;
+
+opacity:.3;
+
+animation:cloudMove 30s linear infinite;
+
+}
+
+.cloud::before{
+
+content:"";
+
+position:absolute;
+
+width:60px;
+
+height:60px;
+
+background:white;
+
+border-radius:50%;
+
+left:15px;
+
+top:-25px;
+
+}
+
+.cloud::after{
+
+content:"";
+
+position:absolute;
+
+width:70px;
+
+height:70px;
+
+background:white;
+
+border-radius:50%;
+
+right:20px;
+
+top:-35px;
+
+}
+
+@keyframes cloudMove{
+
+0%{left:-200px;}
+
+100%{left:120%;}
+
+}
+
+/* Rain */
+
+.rain{
+
+position:absolute;
+
+width:2px;
+
+height:18px;
+
+background:rgba(255,255,255,.5);
+
+animation:rain 1s linear infinite;
+
+}
+
+@keyframes rain{
+
+0%{
+transform:translateY(-100vh);
+}
+
+100%{
+transform:translateY(100vh);
+}
+
+}
+
+/* Card */
+
+.card{
+
+width:520px;
+
+padding:35px;
+
+text-align:center;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(12px);
+
+border-radius:20px;
+
+color:white;
+
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+animation:fade 2s;
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+h1{
+
+font-size:45px;
+
+margin-bottom:20px;
+
+}
+
+p{
+
+font-size:19px;
+
+line-height:34px;
+
+}
+
+button{
+
+margin-top:30px;
+
+padding:14px 35px;
+
+border:none;
+
+border-radius:30px;
+
+background:#ff4f81;
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Optional Rain Sound -->
+<audio autoplay loop>
+<source src="rain.mp3" type="audio/mpeg">
+</audio>
+
+<div class="moon"></div>
+
+<div class="cloud" style="top:120px;animation-duration:35s;"></div>
+<div class="cloud" style="top:220px;animation-duration:28s;"></div>
+<div class="cloud" style="top:320px;animation-duration:40s;"></div>
+
+<div class="card">
+
+<h1>🌙 I Miss You ❤️</h1>
+
+<p>
+
+Some nights feel longer...<br><br>
+
+Because you're not beside me. 🥺<br><br>
+
+The moon reminds me of you... 🌙<br>
+
+The rain reminds me of our memories... 🌧️<br><br>
+
+No matter how far you are...<br>
+
+You'll always be the closest to my heart. ❤️<br><br>
+
+I Miss You...<br>
+
+Every Second... Every Minute... Every Day... ❤️
+
+</p>
+
+<button onclick="location.href='future.html'">
+
+Next Surprise ➜
+
+</button>
+
+</div>
+
+<script>
+
+/* Stars */
+
+for(let i=0;i<120;i++){
+
+let s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+s.style.animationDelay=Math.random()*2+"s";
+
+document.body.appendChild(s);
+
+}
+
+/* Rain */
+
+for(let i=0;i<180;i++){
+
+let r=document.createElement("div");
+
+r.className="rain";
+
+r.style.left=Math.random()*100+"vw";
+
+r.style.animationDelay=Math.random()+"s";
+
+r.style.animationDuration=(0.7+Math.random())+"s";
+
+document.body.appendChild(r);
+
+}
+
+</script>
+
+</body>
+</html>

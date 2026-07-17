@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Quiz ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffd1dc);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:hidden;
+}
+
+/* Hearts */
+
+.heart{
+position:absolute;
+bottom:-40px;
+font-size:20px;
+color:white;
+animation:float 8s linear infinite;
+opacity:.8;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0) scale(.5);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-110vh) scale(1.5);
+opacity:0;
+}
+
+}
+
+.card{
+
+width:550px;
+max-width:90%;
+
+background:rgba(255,255,255,.22);
+
+backdrop-filter:blur(18px);
+
+padding:35px;
+
+border-radius:25px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+animation:pop .8s;
+
+}
+
+@keyframes pop{
+
+from{
+opacity:0;
+transform:scale(.8);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+h1{
+
+text-align:center;
+
+color:#ff2d6f;
+
+margin-bottom:25px;
+
+}
+
+.question{
+
+font-size:20px;
+
+font-weight:600;
+
+color:#444;
+
+margin-bottom:20px;
+
+}
+
+.option{
+
+background:white;
+
+padding:15px;
+
+margin:12px 0;
+
+border-radius:15px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.option:hover{
+
+background:#ffedf3;
+
+transform:translateX(5px);
+
+}
+
+button{
+
+margin-top:25px;
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:30px;
+
+background:#ff4f81;
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+display:none;
+
+}
+
+#result{
+
+display:none;
+
+text-align:center;
+
+}
+
+#result h2{
+
+color:#ff2d6f;
+
+font-size:35px;
+
+margin-bottom:15px;
+
+}
+
+#result p{
+
+font-size:20px;
+
+line-height:35px;
+
+color:#444;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div id="quiz">
+
+<h1>❤️ How Well Do You Know Us? ❤️</h1>
+
+<div class="question" id="question"></div>
+
+<div id="options"></div>
+
+<button id="nextBtn" onclick="nextQuestion()">Next ❤️</button>
+
+</div>
+
+<div id="result">
+
+<h2 id="scoreText"></h2>
+
+<p id="message"></p>
+
+<br>
+
+<button onclick="location.href='reasons.html'" style="display:block;">
+Next Surprise ➜
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* Hearts */
+
+for(let i=0;i<40;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(15+Math.random()*25)+"px";
+
+h.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+}
+
+/* Quiz */
+
+const quiz=[
+
+{
+q:"❤️ When did our love story begin?",
+o:["14 Feb 2023","22 Aug 2022","1 Jan 2022","10 Oct 2022"],
+a:1
+},
+
+{
+q:"💕 Who loves more?",
+o:["Me ❤️","You ❤️","Both Equally ❤️","No Idea 😂"],
+a:2
+},
+
+{
+q:"🌍 What can't change our love?",
+o:["Distance","Time","Nothing","Everything"],
+a:0
+},
+
+{
+q:"🥹 What's my favorite person?",
+o:["Friend","Family","You ❤️","Neighbor"],
+a:2
+},
+
+{
+q:"💍 Our dream is...",
+o:["Travel","Stay Friends","Be Together Forever ❤️","Nothing"],
+a:2
+}
+
+];
+
+let current=0;
+let score=0;
+
+function loadQuestion(){
+
+document.getElementById("nextBtn").style.display="none";
+
+let q=quiz[current];
+
+document.getElementById("question").innerHTML=q.q;
+
+let html="";
+
+q.o.forEach((opt,index)=>{
+
+html+=`<div class="option" onclick="check(${index})">${opt}</div>`;
+
+});
+
+document.getElementById("options").innerHTML=html;
+
+}
+
+function check(index){
+
+let options=document.getElementsByClassName("option");
+
+for(let i=0;i<options.length;i++){
+
+options[i].style.pointerEvents="none";
+
+}
+
+if(index==quiz[current].a){
+
+score++;
+
+options[index].style.background="#b8ffb8";
+
+}
+else{
+
+options[index].style.background="#ffd0d0";
+
+options[quiz[current].a].style.background="#b8ffb8";
+
+}
+
+document.getElementById("nextBtn").style.display="block";
+
+}
+
+function nextQuestion(){
+
+current++;
+
+if(current<quiz.length){
+
+loadQuestion();
+
+}
+else{
+
+showResult();
+
+}
+
+}
+
+function showResult(){
+
+document.getElementById("quiz").style.display="none";
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("scoreText").innerHTML=score+" / 5 ❤️";
+
+let msg="";
+
+if(score==5){
+
+msg="🥹❤️<br><br>You know us better than anyone!<br><br>I think you're the perfect boyfriend ever. 💕";
+
+}
+
+else if(score==4){
+
+msg="😍❤️<br><br>Almost Perfect!<br><br>You remembered almost everything. ❤️";
+
+}
+
+else if(score==3){
+
+msg="😂❤️<br><br>You forgot!!<br><br><b>Punishment:</b><br>Give me 100 kisses 😘❤️";
+
+}
+
+else if(score==2){
+
+msg="🙈❤️<br><br>Looks like someone needs memory training. 😂<br><br>Punishment:<br>Unlimited hugs + kisses ❤️";
+
+}
+
+else{
+
+msg="🤣❤️<br><br>Seriously??<br><br>You need another date with me! ❤️";
+
+}
+
+document.getElementById("message").innerHTML=msg;
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>

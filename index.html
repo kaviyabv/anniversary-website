@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Secret ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    overflow:hidden;
+}
+
+/* Floating Hearts */
+
+.heart{
+    position:absolute;
+    bottom:-40px;
+    color:white;
+    font-size:20px;
+    animation:float 8s linear infinite;
+    opacity:.8;
+}
+
+@keyframes float{
+
+0%{
+    transform:translateY(0) scale(.6);
+    opacity:0;
+}
+
+20%{
+    opacity:1;
+}
+
+100%{
+    transform:translateY(-110vh) scale(1.5);
+    opacity:0;
+}
+
+}
+
+/* Login Card */
+
+.container{
+
+    width:380px;
+
+    background:rgba(255,255,255,.22);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:25px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+    animation:popup .8s;
+
+}
+
+@keyframes popup{
+
+from{
+    transform:scale(.8);
+    opacity:0;
+}
+
+to{
+    transform:scale(1);
+    opacity:1;
+}
+
+}
+
+h1{
+
+    color:white;
+    margin-bottom:15px;
+    font-size:40px;
+
+}
+
+#typing{
+
+    min-height:65px;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    line-height:28px;
+
+    margin-bottom:20px;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin:10px 0;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:15px;
+
+    font-size:15px;
+
+}
+
+button{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-top:20px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#ff4f81;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#ff2d6f;
+
+    transform:scale(1.05);
+
+}
+
+#msg{
+
+    min-height:45px;
+
+    margin-top:18px;
+
+    color:white;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+}
+
+#hint{
+
+    margin-top:15px;
+
+    color:white;
+
+    font-size:14px;
+
+}
+
+#hint span{
+
+    color:#fff700;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Secret❤️Entry</h1>
+
+<div id="typing"></div>
+
+<input
+type="text"
+id="name"
+placeholder="Your Nickname">
+
+<input
+type="password"
+id="pass"
+placeholder="Enter Your Heart Password ❤️">
+
+<button onclick="login()">
+
+Unlock My Heart ❤️
+
+</button>
+
+<div id="msg"></div>
+
+<div id="hint">
+
+Forgot Password?
+
+<span onclick="showHint()">Click Here 😜</span>
+
+</div>
+
+</div>
+
+<script>
+
+/* Floating Hearts */
+
+for(let i=0;i<30;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(15+Math.random()*25)+"px";
+
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+heart.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(heart);
+
+}
+
+/* Typewriter */
+
+const messages=[
+
+"👋 Welcome Back, My Favorite Person...",
+
+"🫶 Enter Your Heart Password ❤️"
+
+];
+
+let line=0;
+let letter=0;
+
+function typeWriter(){
+
+if(line<messages.length){
+
+if(letter<messages[line].length){
+
+document.getElementById("typing").innerHTML+=messages[line].charAt(letter);
+
+letter++;
+
+setTimeout(typeWriter,45);
+
+}
+
+else{
+
+document.getElementById("typing").innerHTML+="<br>";
+
+line++;
+
+letter=0;
+
+setTimeout(typeWriter,400);
+
+}
+
+}
+
+}
+
+typeWriter();
+
+/* Wrong Messages */
+
+const wrongMessages=[
+
+"🥺 That's not our secret.",
+
+"😜 Nope... Try our special day.",
+
+"❤️ Hint:<br>The day our love story started."
+
+];
+
+/* Login */
+
+function login(){
+
+let name=document.getElementById("name").value.trim().toLowerCase();
+
+let pass=document.getElementById("pass").value;
+
+if(name==="mama" && pass==="0220"){
+
+document.getElementById("msg").innerHTML="🥹 Welcome My Forever Person ❤️";
+
+setTimeout(function(){
+
+window.location.href="home.html";
+
+},1800);
+
+}
+else{
+
+let random=Math.floor(Math.random()*wrongMessages.length);
+
+document.getElementById("msg").innerHTML=wrongMessages[random];
+
+}
+
+}
+
+/* Hint */
+
+function showHint(){
+
+alert("❤️ Hint\n\nOur Love Story Started On\n22 - 08 - 2022");
+
+}
+
+</script>
+
+</body>
+</html>
