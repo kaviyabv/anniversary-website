@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letter For You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+overflow:hidden;
+
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffd1dc);
+
+}
+
+/* Floating Hearts */
+
+.heart{
+
+position:absolute;
+
+bottom:-40px;
+
+font-size:20px;
+
+color:white;
+
+animation:float 8s linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0) scale(.5);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-110vh) scale(1.5);
+opacity:0;
+}
+
+}
+
+.letter{
+
+width:750px;
+
+max-width:90%;
+
+height:78vh;
+
+overflow:auto;
+
+padding:40px;
+
+background:rgba(255,255,255,.22);
+
+backdrop-filter:blur(18px);
+
+border-radius:25px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+}
+
+h1{
+
+font-family:'Dancing Script',cursive;
+
+font-size:48px;
+
+text-align:center;
+
+color:#ff2d6f;
+
+margin-bottom:30px;
+
+}
+
+#content{
+
+font-size:20px;
+
+line-height:40px;
+
+color:#444;
+
+min-height:420px;
+
+white-space:pre-line;
+
+}
+
+.cursor{
+
+display:inline-block;
+
+animation:blink .8s infinite;
+
+}
+
+@keyframes blink{
+
+50%{
+opacity:0;
+}
+
+}
+
+button{
+
+display:none;
+
+margin:30px auto 0;
+
+padding:14px 40px;
+
+border:none;
+
+border-radius:30px;
+
+background:#ff4f81;
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+.center{
+
+text-align:center;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="letter">
+
+<h1>💌 A Letter For You ❤️</h1>
+
+<div id="content"></div>
+
+<div class="center">
+
+<button id="nextBtn" onclick="location.href='timeline.html'">
+
+Continue Our Journey ❤️
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* Floating Hearts */
+
+for(let i=0;i<40;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(15+Math.random()*25)+"px";
+
+heart.style.animationDuration=(5+Math.random()*6)+"s";
+
+heart.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(heart);
+
+}
+
+/* Letter Lines */
+
+const lines=[
+
+"Dear Love... ❤️",
+
+"",
+
+"I still remember... 🥹",
+
+"",
+
+"22 August 2022... ❤️",
+
+"",
+
+"The day two hearts became one.",
+
+"",
+
+"I never imagined that",
+
+"one person could become",
+
+"my biggest happiness.",
+
+"",
+
+"Thank you for every smile 😊",
+
+"Thank you for every call 📞",
+
+"Thank you for every memory ❤️",
+
+"",
+
+"Even though we're far apart...",
+
+"My heart has never felt",
+
+"far from yours. ❤️",
+
+"",
+
+"I miss you every single day...",
+
+"But I also smile...",
+
+"Because I know",
+
+"our love is stronger",
+
+"than any distance. 🌍",
+
+"",
+
+"You are my safe place.",
+
+"My peace.",
+
+"My happiness.",
+
+"My forever. ❤️",
+
+"",
+
+"Happy 4th Love Anniversary.",
+
+"",
+
+"I Love You More",
+
+"Than Words Can Ever Explain. ❤️"
+
+];
+
+let currentLine=0;
+
+const content=document.getElementById("content");
+
+function showNextLine(){
+
+if(currentLine<lines.length){
+
+content.innerHTML+=lines[currentLine]+"<br>";
+
+content.scrollTop=content.scrollHeight;
+
+currentLine++;
+
+setTimeout(showNextLine,1800);
+
+}
+else{
+
+document.getElementById("nextBtn").style.display="inline-block";
+
+}
+
+}
+
+showNextLine();
+
+</script>
+
+</body>
+</html>

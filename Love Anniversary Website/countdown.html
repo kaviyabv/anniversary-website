@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Love Counter ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffd1dc);
+overflow:hidden;
+}
+
+/* Floating Hearts */
+
+.heart{
+position:absolute;
+bottom:-40px;
+font-size:20px;
+color:white;
+animation:float 8s linear infinite;
+opacity:.8;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0) scale(.5);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-110vh) scale(1.5);
+opacity:0;
+}
+
+}
+
+/* Card */
+
+.card{
+
+width:700px;
+max-width:90%;
+
+padding:40px;
+
+background:rgba(255,255,255,.22);
+
+backdrop-filter:blur(18px);
+
+border-radius:25px;
+
+text-align:center;
+
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+}
+
+h1{
+
+font-size:45px;
+
+color:#ff2d6f;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+color:#555;
+
+margin-bottom:35px;
+
+font-size:18px;
+
+}
+
+.counter{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:20px;
+
+margin-top:25px;
+
+}
+
+.box{
+
+background:white;
+
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+transition:.3s;
+
+}
+
+.box:hover{
+
+transform:translateY(-8px);
+
+}
+
+.number{
+
+font-size:34px;
+
+font-weight:bold;
+
+color:#ff2d6f;
+
+margin-bottom:8px;
+
+}
+
+.label{
+
+color:#666;
+
+font-size:16px;
+
+}
+
+#counting{
+
+margin-top:35px;
+
+font-size:24px;
+
+font-weight:bold;
+
+color:#ff2d6f;
+
+animation:pulse 1.5s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+
+}
+
+button{
+
+margin-top:35px;
+
+padding:15px 40px;
+
+border:none;
+
+border-radius:30px;
+
+background:#ff4f81;
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>❤️ Together ❤️</h1>
+
+<p class="subtitle">
+Every second with you is my favorite memory. 🥹
+</p>
+
+<div class="counter">
+
+<div class="box">
+<div class="number" id="days">0</div>
+<div class="label">❤️ Days</div>
+</div>
+
+<div class="box">
+<div class="number" id="hours">0</div>
+<div class="label">🕒 Hours</div>
+</div>
+
+<div class="box">
+<div class="number" id="minutes">0</div>
+<div class="label">⏰ Minutes</div>
+</div>
+
+<div class="box">
+<div class="number" id="seconds">0</div>
+<div class="label">⌛ Seconds</div>
+</div>
+
+</div>
+
+<div id="counting">
+
+❤️ Still Counting... Forever ❤️
+
+</div>
+
+<button onclick="location.href='miss.html'">
+
+Next Surprise ➜
+
+</button>
+
+</div>
+
+<script>
+
+/* Floating Hearts */
+
+for(let i=0;i<45;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(15+Math.random()*25)+"px";
+
+h.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+}
+
+/* Love Started */
+
+const loveDate=new Date("August 22, 2022 00:00:00");
+
+function updateCounter(){
+
+const now=new Date();
+
+const diff=now-loveDate;
+
+const days=Math.floor(diff/(1000*60*60*24));
+const hours=Math.floor(diff/(1000*60*60));
+const minutes=Math.floor(diff/(1000*60));
+const seconds=Math.floor(diff/1000);
+
+document.getElementById("days").innerHTML=days.toLocaleString();
+
+document.getElementById("hours").innerHTML=hours.toLocaleString();
+
+document.getElementById("minutes").innerHTML=minutes.toLocaleString();
+
+document.getElementById("seconds").innerHTML=seconds.toLocaleString();
+
+}
+
+updateCounter();
+
+setInterval(updateCounter,1000);
+
+</script>
+
+</body>
+</html>

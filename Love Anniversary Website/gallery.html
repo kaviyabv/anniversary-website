@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Memory Gallery ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffd1dc);
+overflow-x:hidden;
+padding:40px 20px;
+}
+
+/* Floating Hearts */
+
+.heart{
+position:fixed;
+bottom:-30px;
+font-size:22px;
+color:white;
+animation:float 8s linear infinite;
+opacity:.7;
+z-index:-1;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0) scale(.5);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-110vh) scale(1.6);
+opacity:0;
+}
+}
+
+h1{
+text-align:center;
+font-size:48px;
+color:#ff2d6f;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:white;
+font-size:18px;
+margin-bottom:35px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+max-width:1200px;
+margin:auto;
+}
+
+.card{
+
+background:rgba(255,255,255,.25);
+
+backdrop-filter:blur(18px);
+
+border-radius:20px;
+
+overflow:hidden;
+
+box-shadow:0 15px 25px rgba(0,0,0,.18);
+
+transition:.4s;
+
+cursor:pointer;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px) scale(1.03);
+
+}
+
+.card img{
+
+width:100%;
+height:250px;
+object-fit:cover;
+
+}
+
+.details{
+
+padding:18px;
+
+}
+
+.date{
+
+color:#ff2d6f;
+font-weight:bold;
+margin-bottom:8px;
+
+}
+
+.place{
+
+color:#666;
+margin-bottom:8px;
+
+}
+
+.caption{
+
+line-height:24px;
+color:#444;
+
+}
+
+button{
+
+display:block;
+
+margin:45px auto;
+
+padding:15px 40px;
+
+border:none;
+
+border-radius:30px;
+
+background:#ff4f81;
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+/* Image Popup */
+
+.popup{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.85);
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+z-index:999;
+
+}
+
+.popup img{
+
+max-width:85%;
+max-height:85%;
+border-radius:20px;
+box-shadow:0 0 30px white;
+
+animation:zoom .4s;
+
+}
+
+@keyframes zoom{
+
+from{
+transform:scale(.5);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+.close{
+
+position:absolute;
+
+top:25px;
+right:35px;
+
+font-size:45px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>📸 Our Beautiful Memories ❤️</h1>
+
+<p class="subtitle">
+Every picture tells a story... Every story begins with You. 🥹❤️
+</p>
+
+<div class="gallery">
+
+<div class="card">
+
+<img src="images/photo1.jpg" onclick="openImage(this.src)">
+
+<div class="details">
+
+<div class="date">❤️ 22 August 2022</div>
+
+<div class="place">📍 WhatsApp</div>
+
+<div class="caption">
+
+📝 The first message...
+The beginning of our forever. ❤️
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="images/photo2.jpg" onclick="openImage(this.src)">
+
+<div class="details">
+
+<div class="date">❤️ 15 February 2023</div>
+
+<div class="place">📍 Thanjavur</div>
+
+<div class="caption">
+
+📝 Our happiest selfie together.
+My favorite smile. 🥹❤️
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="images/photo3.jpg" onclick="openImage(this.src)">
+
+<div class="details">
+
+<div class="date">❤️ 12 June 2023</div>
+
+<div class="place">📍 Temple</div>
+
+<div class="caption">
+
+📝 A beautiful day,
+A beautiful memory,
+A beautiful "Us". ❤️
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="images/photo4.jpg" onclick="openImage(this.src)">
+
+<div class="details">
+
+<div class="date">❤️ 14 February 2024</div>
+
+<div class="place">📍 Our Favorite Place</div>
+
+<div class="caption">
+
+📝 Love isn't in the place...
+It's in the person standing beside me. ❤️
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="images/photo5.jpg" onclick="openImage(this.src)">
+
+<div class="details">
+
+<div class="date">❤️ 22 August 2025</div>
+
+<div class="place">📍 Anniversary</div>
+
+<div class="caption">
+
+📝 Another year.
+Another thousand memories.
+Still choosing You. ❤️
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="images/photo6.jpg" onclick="openImage(this.src)">
+
+<div class="details">
+
+<div class="date">❤️ Today</div>
+
+<div class="place">📍 Long Distance 🌍</div>
+
+<div class="caption">
+
+📝 Miles apart...
+But my heart still reaches you every single day. ❤️
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<button onclick="location.href='quiz.html'">
+Next Surprise ➜
+</button>
+
+<div class="popup" id="popup">
+
+<span class="close" onclick="closeImage()">&times;</span>
+
+<img id="popupImg">
+
+</div>
+
+<script>
+
+/* Floating Hearts */
+
+for(let i=0;i<45;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(15+Math.random()*30)+"px";
+
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+heart.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(heart);
+
+}
+
+/* Popup */
+
+function openImage(src){
+
+document.getElementById("popup").style.display="flex";
+
+document.getElementById("popupImg").src=src;
+
+}
+
+function closeImage(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+document.getElementById("popup").onclick=function(e){
+
+if(e.target==this){
+
+closeImage();
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
